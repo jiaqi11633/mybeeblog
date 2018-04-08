@@ -10,4 +10,6 @@ import (
 func init() {
 	models.RegisterDB()
 	beego.Router("/", &controllers.MainController{})
+
+	beego.Router("/login", &controllers.LoginController{})
 }
