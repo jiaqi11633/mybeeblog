@@ -7,6 +7,7 @@
       <div class="container">
      {{template "navbar" .}}
       </div>
+    </div>
 <div class="container" >
   <form method="GET" action="/category">
   <div class="form-group">
@@ -39,20 +40,17 @@
     </thead>
     <tbody>
       {{range .Categories}}
+      <tr>
       <th>{{.Id}}</th>
         <th>{{.Title}}</th>
         <th>{{.TopicCount}}</th>
-        <th>
+       </tr>
         <a href="/category?op=del&id={{.Id}}">删除</a> 
         </th>
         {{end}}
     </tbody>
     </table>
-  </div>
-  </div>
-
-</div>
-
+    
  <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
  <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
 </body>
