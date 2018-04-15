@@ -41,6 +41,19 @@ type Topic struct {
 	ReplyLastUserId int64
 }
 
+func AddTopic(title, content string) error {
+	o := orm.NewOrm()
+	topic := &Topic{
+		Title:   title,
+		Content: content,
+		Created: time.Now(),
+		Updated: time.Now(),
+	}
+
+	_, err := o.Insert(topic)
+	return err
+}
+
 func RegisterDB() {
 	if !com.IsExist(_DB_NAME) {
 		os.MkdirAll(path.Dir(_DB_NAME), os.ModePerm)
