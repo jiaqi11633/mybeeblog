@@ -14,6 +14,13 @@ func (this *TopicController) Get() {
 	this.Data["IsLogin"] = checkAccount(this.Ctx)
 	this.Data["IsTopic"] = true
 	this.TplName = "topic.html"
+
+	topics, err := models.GetAllTopics(false)
+	if err != nil {
+		beego.Error(err)
+	} else {
+		this.Data["Topics"] = topics
+	}
 }
 
 func (this *TopicController) Post() {
@@ -30,7 +37,7 @@ func (this *TopicController) Post() {
 	if err != nil {
 		beego.Error(err)
 	}
-	this.Redirect("/topic", 301)
+	this.Redirect("/topic", 302)
 	return
 }
 

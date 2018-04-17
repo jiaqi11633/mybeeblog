@@ -34,7 +34,7 @@ type Topic struct {
 	Attachment      string
 	Created         time.Time `orm:"index"`
 	Updated         time.Time `orm:"index"`
-	Views           time.Time `orm:"index"`
+	Views           int64     `orm:"index"`
 	Author          string
 	ReplyTime       time.Time `orm:"index"`
 	ReplyCount      int64
@@ -103,4 +103,14 @@ func DelCategory(id string) error {
 	cate := &Category{Id: cid}
 	_, err = o.Delete(cate)
 	return err
+}
+
+func GetAllTopics(isDesc bool) ([]*Topic, error) {
+	o := orm.NewOrm()
+	topics := make([]*Topic, 0)
+
+	qs := o.QueryTable("topic")
+	_, err := qs.All(&topics)
+
+	return topics, err
 }

@@ -9,7 +9,7 @@
      </div>
 
      <div class=" pull-right">
-     	<ul class="nav navbar-nav">
+     	<ul class="nav navbar-default">
      		{{if .IsLogin}}
 			<li><a href="/login?exit=true">退出</a></li>
      		{{else}}

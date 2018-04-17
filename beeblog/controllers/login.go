@@ -12,8 +12,8 @@ type LoginController struct {
 func (this *LoginController) Get() {
 	isExit := this.Input().Get("exit") == "true"
 	if isExit {
-		this.Ctx.SetCookie("uname", "11", -1, "/")
-		this.Ctx.SetCookie("pwd", "11", -1, "/")
+		this.Ctx.SetCookie("uname", "", -1, "/")
+		this.Ctx.SetCookie("pwd", "", -1, "/")
 		this.Redirect("/", 301)
 		return
 	}
@@ -39,7 +39,6 @@ func (this *LoginController) Post() {
 }
 
 func checkAccount(ctx *context.Context) bool {
-
 	ck, err := ctx.Request.Cookie("uname")
 	if err != nil {
 		return false
